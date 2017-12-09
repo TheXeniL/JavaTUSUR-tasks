@@ -6,6 +6,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Controller
 public class CustomerController {
 
@@ -14,10 +17,14 @@ public class CustomerController {
 
     @RequestMapping("/customers/{customerName}")
     @ResponseBody
-    String home(@PathVariable("customerName") String customerName){
-        for (Customer customer : customerRepository.findAll()) {
+    List<String> customerByName(@PathVariable("customerName") String customerName){
 
+        List<String> customers = new ArrayList<>();
+
+        for (Customer customer : customerRepository.findByLastName(customerName)) {
+        customers.add(customerName);
         }
-        return "Hello world" ;
+
+        return customers;
     }
 }
