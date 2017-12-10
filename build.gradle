@@ -30,6 +30,8 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.social:spring-social-twitter")
 	compile("com.h2database:h2")
+	compile project(':rest')
+	compile project(':domain')
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	testCompile("junit:junit")
 }
