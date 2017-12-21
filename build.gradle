@@ -29,9 +29,13 @@ dependencies {
 	compile("org.springframework.boot:spring-boot-starter-data-jpa")
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile("org.springframework.social:spring-social-twitter")
+	compile("org.springframework.boot:spring-boot-starter-security")
+	testCompile("org.springframework.boot:spring-boot-starter-test")
+	testCompile("org.springframework.security:spring-security-test")
 	compile("com.h2database:h2")
 	compile project(':rest')
 	compile project(':domain')
+	compile('org.activity:spring-boot-starter-basic:5.17.0')
 	testCompile("org.springframework.boot:spring-boot-starter-test")
 	testCompile("junit:junit")
 }

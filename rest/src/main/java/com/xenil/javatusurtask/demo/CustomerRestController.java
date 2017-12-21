@@ -2,6 +2,7 @@ package com.xenil.javatusurtask.demo;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,6 +16,7 @@ public class CustomerRestController {
     @Autowired
     JdbcTemplate jdbcTemplate;
 
+    @Async
     @RequestMapping("/api/customers/")
     @ResponseBody
     List<Customer> home(){

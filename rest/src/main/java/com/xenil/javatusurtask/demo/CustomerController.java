@@ -8,10 +8,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 public class CustomerController {
+
+    @Autowired
+    final RuntimeService runtimeService;
+
+    @Autowired
+    final TaskService taskService;
 
     @Autowired
     JdbcTemplate jdbcTemplate;
@@ -28,5 +36,16 @@ public class CustomerController {
         ).forEach(customer -> foundCustomer.add(customer));
 
         return foundCustomer;
+    }
+
+    @RequestMapping(value = "/process")
+        @ResponseBody
+        public String startProcess() {
+            Map<String, Object> variables = new HashMap<String, Object>();
+            variables.put("applicantName", "John Doe");
+            variables.put("email", "john.doe@activiti.com");
+            variables.put("phoneNumber", "123456789");
+            runtimeService.startProcessInstanceByKey("hireProcess", variables);
+            return "hello";
     }
 }
